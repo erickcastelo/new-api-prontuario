@@ -72,9 +72,32 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'token' => $token,
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'user' => $this->jsonUserHidden()
         ]);
+    }
+
+    private function jsonUserHidden()
+    {
+        $user = $this->me()->original;
+        $arrayHidden = [
+            'password',
+            'bairro',
+            'cep',
+            'cidade',
+            'complemento',
+            'cpf',
+            'endereco',
+            'fone',
+            'rg',
+            'codpais',
+        ];
+
+        foreach ($arrayHidden as $item) {
+            unset($user[$item]);
+        }
+
+        return $user;
     }
 }
