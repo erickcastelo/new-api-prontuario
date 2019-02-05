@@ -41,7 +41,8 @@ class PessoaRequest extends FormRequest
             'complemento' => 'nullable|string|max:120',
             'bairro' => 'nullable|string|max:60',
             'cidade' => 'nullable|string|max:60',
-            'uf' => 'nullable|string|max:2'
+            'uf' => 'nullable|string|max:2',
+            'tipopessoa' => 'required|string|max:2'
         ];
     }
 }

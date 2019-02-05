@@ -35,7 +35,9 @@ class BaseService
     public function delete($id)
     {
         $model = $this->findOne($id);
-        $model->delete();
+        if ($model !== null) {
+            $model->delete();
+        }
     }
 
     public function getById($id)

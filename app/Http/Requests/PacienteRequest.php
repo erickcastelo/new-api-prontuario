@@ -2,7 +2,4 @@
 
 namespace App\Http\Requests;
 
-class PacienteRequest extends PessoaRequest
-{
-
-}
+class PacienteRequest extends PessoaRequest { }

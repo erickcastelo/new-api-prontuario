@@ -27,8 +27,10 @@ Route::group([
 });
 
 
-Route::post('paciente/', 'PacienteController@create');
+Route::post('paciente', 'PacienteController@create');
+Route::post('profissional-saude', 'ProfissionalSaudeController@create');
 
 Route::group(['middleware' => ['jwt.auth']], function() {
-    Route::get('pais/', 'PaisController@index');
+    Route::get('pais', 'PaisController@index');
+    Route::post('consulta', 'ConsultaController@create');
 });

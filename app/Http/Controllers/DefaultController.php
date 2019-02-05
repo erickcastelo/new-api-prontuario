@@ -59,6 +59,12 @@ class DefaultController extends Controller
 
     public function delete($id)
     {
+        if ($id === null) {
+            return response()->json([
+                'message' => 'Not Found!'
+            ], 404);
+        }
+
         $this->service->delete($id);
 
         return response()->json([
